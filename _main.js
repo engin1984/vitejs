@@ -1,92 +1,16 @@
 // ########## 
 import "./_main.scss";
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
-
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
 
 
-// Chess UI: chessground + chess.js
-import { Chessground } from 'chessground'
-// chessground ships a few CSS themes in its `assets/` folder. import the base theme.
-import 'chessground/assets/chessground.base.css'
-import { Chess } from 'chess.js'
 // ############ dark mode (ChatGPT)
 const darkToggleBtn = document.getElementById('toggle-dark');
 
-// Initialize a basic chess board (Chessground) and a Chess state (chess.js)
-function initMainBoard() {
-  // Ensure a mount point exists
-  let boardEl = document.getElementById('mainboard');
-  if (!boardEl) {
-    boardEl = document.createElement('div');
-    boardEl.id = 'mainboard';
-    boardEl.className = 'box mb-4';
-    boardEl.style.maxWidth = '480px';
-    boardEl.style.margin = '0 auto';
-    const container = document.querySelector('.container') || document.body;
-    // place after the top-level hero if possible
-    const hero = container.querySelector('.hero');
-    if (hero && hero.parentNode) hero.parentNode.insertBefore(boardEl, hero.nextSibling);
-    else container.insertBefore(boardEl, container.firstChild);
-  }
-
-  // chess.js game state
-  const chess = new Chess();
-
-  // initialize chessground
-  const cg = Chessground(boardEl, {
-    fen: chess.fen(),
-    orientation: 'white',
-    movable: {
-      free: false,
-      color: 'both'
-    },
-    animation: { enabled: true }
-  });
-
-  // expose minimal handles for later puzzle wiring and debugging
-  window._chess = chess;
-  window._cg = cg;
-
-  // simple API: load a FEN into the board (no validation/logic yet)
-  window.loadPuzzle = (fen = 'start') => {
-    try {
-      if (fen === 'start') chess.reset();
-      else chess.load(fen);
-      cg.set({ fen: chess.fen() });
-    } catch (err) {
-      console.error('loadPuzzle error', err);
-    }
-  };
-}
-
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMainBoard);
-else initMainBoard();
 function applyTheme(dark) {
   document.body.classList.toggle('dark', dark);
   localStorage.setItem('darkmode', dark ? '1' : '0');
 }
 
+// load saved theme
 if (localStorage.getItem('darkmode') === '1') {
   applyTheme(true);
 }
@@ -95,6 +19,8 @@ darkToggleBtn?.addEventListener('click', () => {
   const isDark = document.body.classList.contains('dark');
   applyTheme(!isDark);
 });
+
+
 
 // ############ klavye kısayolları
 // H: Home, L: Login
@@ -202,31 +128,4 @@ document.addEventListener('DOMContentLoaded', () => {
       closeAllModals();
     }
   });
-});
-
-// ############ Session Management
-document.addEventListener('DOMContentLoaded', () => {
-    const loginBtn = document.getElementById('login-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const settingsBtn = document.getElementById('settings-btn');
-    
-    const userEmail = localStorage.getItem('user_email');
-    
-    if (userEmail) {
-        // User is logged in
-        if (loginBtn) loginBtn.style.display = 'none';
-        if (logoutBtn) logoutBtn.style.display = 'flex'; // Bulma buttons are flex by default usually, or inline-flex
-        if (settingsBtn) settingsBtn.style.display = 'flex';
-        
-        // Handle logout
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('user_email');
-            window.location.reload();
-        });
-    } else {
-        // User is logged out
-        if (loginBtn) loginBtn.style.display = 'flex';
-        if (logoutBtn) logoutBtn.style.display = 'none';
-        if (settingsBtn) settingsBtn.style.display = 'none';
-    }
 });

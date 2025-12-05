@@ -1,13 +1,296 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/png" href="/favicon.svg" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="256x256" href="/favicon.svg">
+  <meta name="msapplication-TileImage" content="/favicon.svg">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vite project</title>
+</head>
+
+<body>
+
+  <div class="container has-background-white p-4 is-max-widescreen">
+    <nav class="navbar mb-4" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a href="/" class="button is-ghost"><span class="icon"><i
+              class="fa-regular fa-file-pdf"></i></span><span>pdfchess.com</span></a><a role="button"
+          class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span
+            aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span
+            aria-hidden="true"></span></a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-ghost js-modal-trigger" data-target="modal-js-example"><span class="icon"><i
+                    class="fa-solid fa-circle-user"></i></span><span>login</span></a>
+              <a class="button is-ghost" href="settings.html"><span class="icon"><i
+                    class="fa-solid fa-cog"></i></span><span>settings</span></a>
+              <a id="login-btn" class="button is-ghost" href="login.html"><span class="icon"><i
+                    class="fa-solid fa-circle-user"></i></span><span>login</span></a>
+              <a id="logout-btn" class="button is-ghost" style="display: none;"><span class="icon"><i
+                    class="fa-solid fa-sign-out-alt"></i></span><span>logout</span></a>
+              <a id="settings-btn" class="button is-ghost" href="settings.html" style="display: none;"><span
+                  class="icon"><i class="fa-solid fa-cog"></i></span><span>settings</span></a>
+              <a id="toggle-dark" class="button is-ghost" title="Toggle Dark Mode"><span class="icon"><i
+                    class="fa-solid fa-moon"></i></span></a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="notification is-info is-light"><button class="delete"></button>
+      <p>dismissable cookie based site notification</p>
+    </div>
+
+
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <aside class="menu">
+
+          <p class="menu-label">Puzzle Levels</p>
+          <ul class="menu-list">
+            <li><a><span class="icon"><i class="fa-solid fa-star"></i></span><span> Beginner</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chart-line"></i></span><span> Intermediate</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-fire"></i></span><span> Advanced</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-crown"></i></span><span> Expert</span></a></li>
+          </ul>
+
+          <p class="menu-label">Custom Puzzles</p>
+          <ul class="menu-list">
+            <li><a><span class="icon"><i class="fa-solid fa-code-fork"></i></span><span>Forks</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-thumbtack"></i></span><span>Pins</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-flag-checkered"></i></span><span>Endgames</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chess-king"></i></span><span>Mating Patterns</span></a></li>
+          </ul>
+
+          <p class="menu-label">Rules</p>
+          <ul class="menu-list">
+            <li><a><span class="icon"><i class="fa-solid fa-chess-queen"></i></span><span>Queen</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chess-king"></i></span><span>King</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chess-rook"></i></span><span>Rook</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chess-bishop"></i></span><span>Bishop</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chess-knight"></i></span><span>Knight</span></a></li>
+            <li><a><span class="icon"><i class="fa-solid fa-chess-pawn"></i></span><span>Pawn</span></a></li>
+          </ul>
+
+        </aside>
+      </div><!-- menu div -->
+
+      <!-- column right -->
+      <div class="column">
+        <!-- 1 -->
+        <section class="hero is-small is-info mb-4">
+          <div class="hero-body">
+            <p class="title is-4">Seviye 1</p>
+            <p class="subtitle">Daha önce hiç satranç oynamamış olanlar içindir. Taşların hareketini ve basit kuralları
+              içerir.</p>
+          </div>
+        </section>
+
+        <!-- Chess board container -->
+        <div id="mainboard" class="box mb-4" style="max-width:480px;margin:0 auto;">
+          <!-- Chessground will mount here -->
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 1</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 2</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 3</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 4</figcaption>
+            </figure>
+          </div>
+
+        </div>
+        <!-- 1 -->
+
+
+        <!-- 2 -->
+        <section class="hero is-small is-warning mb-4">
+          <div class="hero-body">
+            <p class="title is-4">Seviye 2</p>
+            <p class="subtitle">Taş almak, savunma yapmak, ...</p>
+          </div>
+        </section>
+        <div class="columns">
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 5</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 6</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 7</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 8</figcaption>
+            </figure>
+          </div>
+
+        </div>
+        <!-- 2 -->
+
+
+        <!-- 3 -->
+        <section class="hero is-small is-success mb-4">
+          <div class="hero-body">
+            <p class="title is-4">Seviye 3</p>
+            <p class="subtitle">Bulmacalar, matlar, ...</p>
+          </div>
+        </section>
+        <div class="columns">
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 9</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 10</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 11</figcaption>
+            </figure>
+          </div>
+
+          <div class="column">
+            <figure><a href="#">
+                <div class="image is-3by4"><img src="https://bulma.io/assets/images/placeholders/256x256.png" /></div>
+              </a>
+              <figcaption class="has-text-centered mt-2">Figure 12</figcaption>
+            </figure>
+          </div>
+
+        </div>
+        <!-- 3 -->
+
+      </div><!-- column right -->
+    </div><!-- columns -->
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>.
+          The source code is licensed
+          <a href="https://opensource.org/license/mit">MIT</a>. The
+          website content is licensed
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0//">CC BY NC SA 4.0</a>.
+        </p>
+      </div>
+    </footer>
+
+
+  </div><!-- conatainer -->
+
+
+  <!-- modal -->
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box p-2">
+        <form id="login-form">
+          <article class="message is-primary">
+            <div class="message-header">
+              <p>passwordless login</p>
+              <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+              <div class="field">
+                <label class="label">email</label>
+                <div class="control">
+                  <input class="input" id="email" type="email" placeholder="enter your email">
+                </div>
+              </div>
+              <div id="msg"></div>
+
+              <div class="buttons">
+                <button id="send-link-btn" type="button" class="button is-primary">send login link</button>
+              </div>
+
+              <!-- firebase -->
+              <div class="buttons">
+                <a class="button is-primary">send login linkk</a>
+              </div>
+            </div>
+          </article>
+        </form>
+      </div>
+    </div>
+    <!-- <button class="modal-close is-large" aria-label="close"></button> -->
+  </div>
+  <!-- modal -->
+
+  <!-- js -->
+  <script src="https://kit.fontawesome.com/5a2a5f3f4a.js" crossorigin="anonymous"></script>
+  <script type="module" src="./_main.js"></script>
+
+</body>
+
 </html>

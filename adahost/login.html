@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Chess App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half-tablet is-one-third-desktop">
+                    <div class="box">
+                        <h1 class="title has-text-centered">Login</h1>
+                        <p class="subtitle has-text-centered">Enter your email to sign in</p>
+                        
+                        <div id="login-form-container">
+                            <form id="login-form">
+                                <div class="field">
+                                    <label class="label">Email</label>
+                                    <div class="control">
+                                        <input class="input" type="email" id="email-input" placeholder="e.g. alex@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary is-fullwidth" type="submit">Send Magic Link</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="magic-link-sent" class="is-hidden">
+                            <div class="notification is-success is-light">
+                                <p><strong>Magic link sent!</strong></p>
+                                <p>Check your email for the login link.</p>
+                            </div>
+                            <p class="has-text-centered mb-4">
+                                (Since this is a demo, click below to simulate clicking the link)
+                            </p>
+                            <button id="simulate-link-btn" class="button is-link is-outlined is-fullwidth">
+                                Simulate Clicking Link
+                            </button>
+                        </div>
+
+                        <div class="has-text-centered mt-4">
+                            <a href="/">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="./login.js"></script>
+</body>
+</html>

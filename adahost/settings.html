@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - PDFchess</title>
+  <style>
+    body {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar mb-4" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href="/" class="button is-ghost"><span class="icon"><i class="fa-regular fa-file-pdf"></i></span><span>pdfchess.com</span></a><a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a id="login-btn" class="button is-ghost js-modal-trigger" data-target="modal-js-example"><span class="icon"><i class="fa-solid fa-circle-user"></i></span><span>login</span></a>
+            <a id="logout-btn" class="button is-ghost" style="display: none;"><span class="icon"><i class="fa-solid fa-sign-out-alt"></i></span><span>logout</span></a>
+            <a id="settings-btn" class="button is-ghost" href="settings.html" style="display: none;"><span class="icon"><i class="fa-solid fa-cog"></i></span><span>settings</span></a>
+            <a id="toggle-dark" class="button is-ghost" title="Toggle Dark Mode"><span class="icon"><i class="fa-solid fa-moon"></i></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container has-background-white p-4 is-max-widescreen">
+    <h1 class="title">Settings</h1>
+    <p>Welcome, logged-in user! You can only see this page if you are authenticated.</p>
+    </div>
+  <script src="https://kit.fontawesome.com/5a2a5f3f4a.js" crossorigin="anonymous"></script>
+
+  <script type="module" src="/_main.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+// ######### Color Variables
+$LightCoral: #f08080;
+$RoyalBlue: #4169e1;
+$AntiqueWhite: #FAEBD7;
+$Thistle: #d8bfd8;
+$LightSalmon: #FFA07A;
+
+// ######### Bulma Customization
+@use "bulma/sass" with (
+  $family-primary: '"Montserrat", sans-serif',
+  $primary: $LightSalmon,
+  $link: $RoyalBlue,
+  $control-border-width: 0px,
+  $footer-padding: 1rem,
+  $body-background-color: $Thistle,
+  //$navbar-background-color: $LightSalmon,
+  $navbar-height: 4rem, // bulma navbar jump fix
+  $navbar-box-shadow-size: 0
+);
+
+// ######### External CSS Imports
+
+// ######### Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+// ######### Dark Mode
+body.dark {
+  background-color: #333;
+  color: #e0e0e0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .navbar {
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .navbar a {
+  color: #fff;
+}
+
+body.dark code {
+  background-color: #333;
+  color: #eee;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+// ######### Global Reset & Typography
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;       // ensure viewport reference
+  overflow-y: auto;   // Firefox-safe vertical scroll
+  overflow-x: hidden;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;   // keeps flex body at least full viewport
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Full-page centering (centers everything) */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+  background: var(--page-bg, #fafafa);
+}
+
+// ######### Media Responsiveness
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// ######### Focus Handling
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ######### */
+
+/* ######### */
+
+/* ######### */
+
+
+.menu-list a {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+.menu-list .icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.menu-list span {
+  vertical-align: middle;
+}
